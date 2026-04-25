@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harlow & Voss — Est. 1961</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,600;1,6..96,300;1,6..96,400&family=Tenor+Sans&display=swap');
+
+:root {
+  --ink:       #0b0a08;
+  --deep:      #131109;
+  --surface:   #1c1a14;
+  --lifted:    #242018;
+  --ivory:     #f2edd8;
+  --cream:     #e8e0c8;
+  --parchment: #cec5a8;
+  --gold:      #b8945a;
+  --gold-lt:   #d4ad78;
+  --gold-dim:  #8a6a38;
+  --ash:       #7a7260;
+  --muted:     #b0a888;
+  --rule:      rgba(184,148,90,0.22);
+  --rule-lt:   rgba(184,148,90,0.10);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: 'Tenor Sans', sans-serif;
+  min-height: 100vh;
+  cursor: default;
+}
+
+/* ── GRAIN OVERLAY ─────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── NAVIGATION ────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 60px;
+  border-bottom: 1px solid var(--rule-lt);
+  background: rgba(11,10,8,0.88);
+  backdrop-filter: blur(16px);
+}
+
+.nav-mark {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  color: var(--ivory);
+}
+
+.nav-mark span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ash);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ── HERO ──────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 40px 80px;
+}
+
+.hero-bg-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, var(--rule-lt) 1px, transparent 1px),
+    linear-gradient(180deg, var(--rule-lt) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+  animation: gridDrift 30s linear infinite;
+}
+
+@keyframes gridDrift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(80px); }
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,148,90,0.07) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.seal {
+  width: 90px; height: 90px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: sealPulse 5s ease-in-out infinite;
+}
+
+.seal::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(184,148,90,0.28);
+  border-radius: 50%;
+}
+
+.seal::after {
+  content: '';
+  position: absolute; inset: 13px;
+  border: 1px solid rgba(184,148,90,0.12);
+  border-radius: 50%;
+}
+
+@keyframes sealPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(184,148,90,0.06), 0 0 30px 0 rgba(184,148,90,0.04); }
+  50%      { box-shadow: 0 0 0 10px rgba(184,148,90,0.00), 0 0 60px 8px rgba(184,148,90,0.08); }
+}
+
+.seal-glyph {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: riseIn 1s ease 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  color: var(--ivory);
+  opacity: 0;
+  animation: riseIn 1s ease 0.55s forwards;
+}
+
+.hero-title .amp {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+
+.hero-rule {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  margin: 40px auto;
+  opacity: 0;
+  animation: riseIn 1s ease 0.8s forwards;
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  opacity: 0;
+  animation: riseIn 1s ease 1s forwards;
+}
+
+.hero-meta {
+  margin-top: 18px;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ash);
+  opacity: 0;
+  animation: riseIn 1s ease 1.2s forwards;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: riseIn 1s ease 1.8s forwards;
+}
+
+.scroll-cue span {
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, var(--gold-dim), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+/* ── SHARED SECTION STRUCTURE ──────────────────── */
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  position: relative;
+}
+
+section + section {
+  border-top: 1px solid var(--rule-lt);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.58rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 52px;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: var(--rule);
+}
+
+.section-heading {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 30px;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.prose {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.13rem;
+  line-height: 1.95;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 720px;
+}
+
+.prose strong { color: var(--ivory); font-weight: 500; }
+.prose em { color: var(--gold-lt); font-style: italic; }
+
+.prose + .prose { margin-top: 22px; }
+
+/* ── HISTORY TIMELINE ──────────────────────────── */
+.timeline {
+  margin-top: 60px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--gold), rgba(184,148,90,0.1));
+}
+
+.t-entry {
+  position: relative;
+  margin-bottom: 48px;
+  padding-left: 28px;
+}
+
+.t-entry::before {
+  content: '';
+  position: absolute;
+  left: -4px; top: 7px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(184,148,90,0.4);
+}
+
+.t-year {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.t-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.t-text strong { color: var(--ivory); font-weight: 500; }
+
+/* ── STAT ROW ──────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 60px 0;
+}
+
+.stat-cell {
+  background: var(--ink);
+  padding: 36px 28px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.stat-cell:hover { background: var(--surface); }
+
+.stat-number {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-desc {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ash);
+  line-height: 1.6;
+}
+
+/* ── DIVISIONS GRID ────────────────────────────── */
+.divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 52px;
+}
+
+.division-card {
+  background: var(--ink);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.division-card:hover { background: var(--surface); }
+
+.division-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.division-card:hover::before { transform: scaleX(1); }
+
+.div-roman {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  margin-bottom: 14px;
+}
+
+.div-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.div-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.98rem;
+  line-height: 1.78;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.div-text strong { color: var(--cream); font-weight: 500; }
+
+.div-tag {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(184,148,90,0.25);
+  padding: 4px 10px;
+}
+
+/* ── ACHIEVEMENTS ──────────────────────────────── */
+.achievements-list {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ach-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule-lt);
+  transition: background 0.3s;
+}
+
+.ach-row:first-child { border-top: 1px solid var(--rule-lt); }
+
+.ach-year {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  padding-top: 3px;
+  font-style: italic;
+}
+
+.ach-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.ach-text strong { color: var(--ivory); font-weight: 500; }
+.ach-text em { color: var(--gold-lt); }
+
+/* ── FOUNDING PARTNERS ─────────────────────────── */
+#partners { background: var(--deep); }
+
+.partners-duo {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: start;
+  margin-top: 56px;
+}
+
+.partner-block {
+  padding: 0 40px;
+}
+
+.partner-block:first-child { padding-left: 0; }
+.partner-block:last-child  { padding-right: 0; }
+
+.p-name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.p-dates {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+.p-role {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 22px;
+}
+
+.p-bio {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.p-bio strong { color: var(--ivory); font-weight: 500; }
+.p-bio em { color: var(--gold-lt); }
+
+.p-quote {
+  margin-top: 26px;
+  padding: 18px 20px;
+  border-left: 2px solid var(--gold);
+  background: rgba(184,148,90,0.05);
+}
+
+.p-quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--cream);
+  line-height: 1.7;
+}
+
+.p-quote-attr {
+  margin-top: 10px;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.partners-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 14px;
+}
+
+.pdiv-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+}
+
+.pdiv-amp {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+/* ── LEGACY FOOTER SECTION ─────────────────────── */
+#legacy {
+  text-align: center;
+  padding: 100px 40px 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+#legacy::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(184,148,90,0.06), transparent);
+}
+
+.legacy-quote {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  color: var(--cream);
+  line-height: 1.55;
+  max-width: 680px;
+  margin: 0 auto 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-attr {
+  font-size: 0.62rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-rule {
+  width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-footer-brand {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  color: var(--ash);
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-footer-brand span { color: var(--gold); }
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media (max-width: 700px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  section { padding: 70px 24px; }
+
+  .partners-duo {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .partners-divider { flex-direction: row; height: 40px; }
+  .pdiv-line { flex: 1; height: 1px; width: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  .partner-block { padding: 0; }
+}
+
+/* ── SCROLL ANIMATIONS ─────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-mark">HARLOW <span>&</span> VOSS</div>
+  <ul class="nav-links">
+    <li><a href="#history">History</a></li>
+    <li><a href="#divisions">Divisions</a></li>
+    <li><a href="#achievements">Record</a></li>
+    <li><a href="#partners">Founders</a></li>
+    <li><a href="#legacy">Legacy</a></li>
+  </ul>
+  <div class="nav-year">Est. MCMLXI · Manhattan</div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+    <div class="seal">
+      <div class="seal-glyph">H·V</div>
+    </div>
+
+    <div class="hero-eyebrow">Attorneys at Law · New York</div>
+
+    <h1 class="hero-title">
+      HARLOW<br>
+      <span class="amp">&amp;</span><br>
+      VOSS
+    </h1>
+
+    <div class="hero-rule"></div>
+
+    <div class="hero-sub">Sixty-three years of consequence.</div>
+    <div class="hero-meta">One Vanderbilt · 47th Floor · Manhattan, New York · Est. 1961</div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="section-label reveal">The History</div>
+
+  <h2 class="section-heading reveal">Founded on principle.<br>Built on <em>precedent.</em></h2>
+
+  <p class="prose reveal">
+    <strong>Harlow & Voss LLP</strong> was founded in the winter of 1961 in a three-room office on the fourteenth floor of 30 Broad Street — a building that smelled of old paper and ambition. Its two principals arrived from opposite ends of the American legal world, drawn together by a shared conviction: that the law, practiced without fear or deference, was the most powerful instrument a civilization had ever produced.
+  </p>
+
+  <p class="prose reveal">
+    The firm's first decade was defined by scarcity and ferocity in equal measure. <strong>Edmund Harlow</strong> and <strong>Pieter Voss</strong> took every case the white-shoe firms declined — antitrust battles no one thought winnable, criminal defenses for clients whose innocence was commercially inconvenient, corporate disputes where the opposing counsel outnumbered them eight to one. They won more than they lost. They lost less than anyone expected. By 1970, they had twenty-two attorneys and a waiting list.
+  </p>
+
+  <p class="prose reveal">
+    The move to <em>One Vanderbilt</em> — the soaring obsidian tower above Grand Central Terminal — came in 2021, crowning a firm that had long outgrown its origins. <strong>Floors 45 through 47</strong> are now the firm's domain: 47,000 square feet of black granite, floor-to-ceiling glass overlooking Midtown, and the particular silence of a place where time is billed at rates that demand it.
+  </p>
+
+  <!-- TIMELINE -->
+  <div class="timeline reveal">
+    <div class="t-entry">
+      <div class="t-year">1961</div>
+      <div class="t-text">Harlow & Voss opens at <strong>30 Broad Street</strong>. Two partners, one paralegal, one secretary. First retainer: <strong>$8,000</strong> from a garment manufacturer facing federal trade violations. The case is won in eleven days.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">1967</div>
+      <div class="t-text">The firm's first landmark win: <em>Kellner Industries v. the United States</em> — a federal antitrust case that rewrites how vertical integration is assessed under the Sherman Act. Pieter Voss argues before the Second Circuit for six uninterrupted hours. The opinion cites his brief seventeen times.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">1974</div>
+      <div class="t-text">The firm moves to <strong>Park Avenue</strong>. First expansion: the White Collar Criminal Defense division is formally established, drawing attorneys who have clerked at the Supreme Court level. The firm reaches <strong>fifty attorneys</strong> for the first time.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">1981</div>
+      <div class="t-text">Edmund Harlow successfully defends <strong>Aldus-Croft Financial</strong> in what the <em>New York Times</em> calls "the securities fraud trial of the decade." Harlow's closing argument is studied at Columbia Law School for the next two decades.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">1993</div>
+      <div class="t-text">Pieter Voss retires from active practice. The <strong>Voss Chair in Litigation Excellence</strong> is endowed at Harvard Law School in his name. He remains Senior Counsel Emeritus until his death in 2009.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">2003</div>
+      <div class="t-text">Edmund Harlow steps back from trial work. The firm's first managing partner from outside the founding generation — <strong>Catherine Aldredge</strong>, Columbia '84 — assumes leadership. Harlow dies in 2011, leaving the firm $40 million in endowment and a forty-two-page letter on the ethics of advocacy.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">2021</div>
+      <div class="t-text">The firm relocates to <strong>One Vanderbilt</strong>, floors 45–47. 47,000 square feet. The war room on the 47th floor becomes the most feared conference room in Manhattan litigation.</div>
+    </div>
+    <div class="t-entry">
+      <div class="t-year">Today</div>
+      <div class="t-text">Harlow & Voss employs <strong>47 associates, 19 partners,</strong> and a support staff of over two hundred. The firm has never lost a jury trial at the federal level. This fact is stated without qualification in every recruiting document the firm produces. It has never been challenged.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding: 60px 40px; max-width: 960px; margin: 0 auto;">
+  <div class="stats-row reveal">
+    <div class="stat-cell">
+      <div class="stat-number">63</div>
+      <div class="stat-desc">Years in<br>Operation</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">19</div>
+      <div class="stat-desc">Named<br>Partners</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">47</div>
+      <div class="stat-desc">Active<br>Associates</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">0</div>
+      <div class="stat-desc">Federal Jury<br>Trial Losses</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">$1.2B</div>
+      <div class="stat-desc">Litigation Value<br>Managed Annually</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">$1,200</div>
+      <div class="stat-desc">Partner Rate<br>Per Hour</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISIONS -->
+<section id="divisions">
+  <div class="section-label reveal">Practice Divisions</div>
+
+  <h2 class="section-heading reveal">Three disciplines.<br><em>One standard.</em></h2>
+
+  <p class="prose reveal">
+    From its earliest years, the firm resisted the instinct to diversify broadly. Where other firms expanded into real estate, family law, and insurance work, Harlow and Voss made a deliberate choice: <em>depth over breadth.</em> The firm practices in three areas, each considered by its own peers to be the most elite expression of that discipline in the Eastern United States.
+  </p>
+
+  <div class="divisions-grid reveal">
+
+    <div class="division-card">
+      <div class="div-roman">I</div>
+      <div class="div-name">Corporate Litigation</div>
+      <div class="div-text">
+        The firm's founding discipline and still its largest. Harlow & Voss handles disputes between entities whose names are on exchange tickers and in quarterly filings: <strong>mergers challenged mid-close, shareholder derivative actions, breach of fiduciary duty at the board level, and the quiet war of contract interpretation where eight words in a term sheet determine eight-figure outcomes.</strong> The division operates on a minimum threshold of $50 million in dispute value. Below that figure, the matter is declined. This has been firm policy since 1974.
+      </div>
+      <div class="div-tag">Minimum $50M Threshold</div>
+    </div>
+
+    <div class="division-card">
+      <div class="div-roman">II</div>
+      <div class="div-name">White Collar Criminal Defense</div>
+      <div class="div-text">
+        Established in 1974 after Pieter Voss successfully defended a senior Treasury official against federal corruption charges in a case the <em>Washington Post</em> described as "unwinnable." The division represents <strong>CEOs, board members, hedge fund principals, and government officials</strong> facing federal prosecution. The attorneys here are former SDNY prosecutors, former public defenders of extraordinary talent, and clerks who have sat beside federal judges and understand precisely how they think. When the Southern District of New York indicts your client, this is where you come.
+      </div>
+      <div class="div-tag">Federal Jurisdiction</div>
+    </div>
+
+    <div class="division-card">
+      <div class="div-roman">III</div>
+      <div class="div-name">Institutional Crisis Management</div>
+      <div class="div-text">
+        The division that does not appear in press releases. Formally it handles <strong>reputational litigation, pre-litigation advisory, regulatory negotiation, and the suppression of legally actionable disclosures</strong> before they surface in discovery or the press. Informally it is where Manhattan's most powerful institutions send their most sensitive problems. The attorneys here do not appear in court. They appear in rooms where the outcome is determined before a filing is ever made. The division was Edmund Harlow's final creation, established in 1998, and was never discussed publicly in his lifetime.
+      </div>
+      <div class="div-tag">Confidential Engagements Only</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label reveal">The Record</div>
+
+  <h2 class="section-heading reveal">Cases that became<br><em>the law itself.</em></h2>
+
+  <p class="prose reveal">
+    Harlow & Voss does not publish a case list. The following is a partial account drawn from public court records, judicial opinions, and the firm's own institutional memory — that precise, uncelebrated knowledge of what was decided, and by whom, and at what cost.
+  </p>
+
+  <div class="achievements-list reveal">
+    <div class="ach-row">
+      <div class="ach-year">1967</div>
+      <div class="ach-text"><strong>Kellner Industries v. United States</strong> — Second Circuit opinion rewrites vertical integration doctrine under the Sherman Act. Voss's brief becomes mandatory reading at seven law schools within a decade.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">1978</div>
+      <div class="ach-text"><strong>Renfrew Capital, SEC Investigation</strong> — Harlow negotiates a consent decree that preserves the firm's trading operations entirely. The SEC's enforcement chief later describes the negotiation as <em>"the most precise legal dismantling I have witnessed from the opposing side."</em></div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">1981</div>
+      <div class="ach-text"><strong>United States v. Aldus-Croft Financial</strong> — Harlow's closing argument in the federal securities fraud trial of the decade. Acquittal on all twelve counts. The jury deliberates for forty minutes.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">1989</div>
+      <div class="ach-text"><strong>Morrow-Lindqvist Merger Arbitration</strong> — The firm's first nine-figure arbitration. A disputed $1.1 billion merger acquisition. The award is delivered in the firm's favor in its entirety. The dissenting arbitrator's opinion is two sentences long.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">1997</div>
+      <div class="ach-text"><strong>In re: Sentinel Group Holdings</strong> — White Collar division secures dismissal of a seventy-three-count federal indictment on procedural grounds. The SDNY does not re-indict. The case is studied in federal criminal procedure courses as a masterwork of pre-trial motion strategy.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">2008</div>
+      <div class="ach-text"><strong>Vantage-Meridian Financial Crisis Litigation</strong> — During the market collapse, the firm simultaneously represents three separate institutional clients in interconnected derivative litigation. All three matters resolve favorably. No conflict of interest is ever established.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">2015</div>
+      <div class="ach-text"><strong>Harlow & Voss v. New York Bar Association</strong> — In a rare instance of the firm litigating on its own behalf, the firm successfully challenges an ethics inquiry targeting one of its Crisis Management partners. The Bar Association drops the matter. The opinion is sealed.</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-year">2022</div>
+      <div class="ach-text"><strong>Kreuz Capital Antitrust Defense</strong> — The firm's most recent landmark matter. A $4.2 billion antitrust action brought by the DOJ. The case is dismissed at summary judgment. The opinion runs to 187 pages and cites Voss's 1967 brief in its reasoning — fifty-five years later.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING PARTNERS -->
+<section id="partners" style="background: var(--deep);">
+  <div class="section-label reveal">The Founders</div>
+
+  <h2 class="section-heading reveal">Two men.<br><em>One argument that lasted sixty years.</em></h2>
+
+  <p class="prose reveal">
+    Edmund Harlow and Pieter Voss disagreed on nearly everything except the law. Their partnership endured for over three decades on the shared conviction that the law, rigorously applied without deference to wealth or power, was the only honest architecture a civilization could build. They were wrong about each other constantly and right about the law almost always. The firm they created outlasted both of them.
+  </p>
+
+  <div class="partners-duo reveal">
+
+    <!-- HARLOW -->
+    <div class="partner-block">
+      <div class="p-name">Edmund J. Harlow</div>
+      <div class="p-dates">1924 — 2011</div>
+      <div class="p-role">Founding Partner · Corporate & Criminal Litigation</div>
+      <p class="p-bio">
+        Born in <strong>New Haven, Connecticut</strong>, the son of a customs judge and a schoolteacher. Educated at Phillips Andover and then <strong>Yale College</strong>, where he read history and finished first in his class. Yale Law followed — he graduated in 1949, clerked for Justice Felix Frankfurter on the Supreme Court, and then, in a decision that baffled everyone who knew him, <em>declined</em> three offers from the most prestigious firms in New York and began building his own.
+      </p>
+      <p class="p-bio" style="margin-top:16px;">
+        Harlow was the firm's public face: courtroom-oriented, rhetorically gifted, possessed of the kind of <strong>patrician calm</strong> that juries instinctively trusted. He never raised his voice in a courtroom. He never needed to. His cross-examinations were described by opposing counsel as "an education in how terribly wrong a witness can be about their own recollection." He tried 63 cases to verdict in his career. He lost four.
+      </p>
+      <div class="p-quote">
+        <div class="p-quote-text">"The law does not care about the truth. The law cares about what can be proven, in the right room, to the right people, at the right moment. Our job is to control all three variables."</div>
+        <div class="p-quote-attr">— Edmund Harlow, Columbia Law School address, 1984</div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="partners-divider">
+      <div class="pdiv-line"></div>
+      <div class="pdiv-amp">&</div>
+      <div class="pdiv-line"></div>
+    </div>
+
+    <!-- VOSS -->
+    <div class="partner-block">
+      <div class="p-name">Pieter H. Voss</div>
+      <div class="p-dates">1921 — 2009</div>
+      <div class="p-role">Founding Partner · Federal Litigation & Appellate</div>
+      <p class="p-bio">
+        Born in <strong>Rotterdam, the Netherlands</strong>. He survived the German occupation as a teenager and emigrated to the United States in 1946 with eleven dollars and a letter of introduction to a Columbia law professor who had heard about him through a mutual friend in The Hague. He earned his law degree in two and a half years. He spoke with a Dutch accent until the day he died and considered it an advantage in the courtroom: <em>no one, he said, ever assumed they understood him.</em>
+      </p>
+      <p class="p-bio" style="margin-top:16px;">
+        Where Harlow persuaded, Voss dismantled. His specialty was the appellate brief — documents of such <strong>structural precision and argumentative density</strong> that federal judges reportedly read them twice before responding. His reputation for courtroom brutality was not exaggerated: he once cross-examined a hostile expert witness for nine consecutive hours, never repeating a question, and reduced the man's entire testimony to rubble without raising his voice above a conversational register.
+      </p>
+      <div class="p-quote">
+        <div class="p-quote-text">"I am not interested in winning. Winning is a consequence. I am interested in being so correct that losing becomes structurally impossible."</div>
+        <div class="p-quote-attr">— Pieter Voss, Harvard Law Review interview, 1979</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEGACY -->
+<section id="legacy" style="text-align:center; padding: 100px 40px 140px; position:relative; overflow:hidden; max-width:100%; border-top: 1px solid var(--rule-lt);">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(184,148,90,0.06), transparent);pointer-events:none;"></div>
+
+  <div class="section-label reveal" style="justify-content:center; max-width:500px; margin: 0 auto 52px;">The Legacy</div>
+
+  <div class="legacy-quote reveal">
+    "There are firms that represent power. There are firms that resist it. Harlow & Voss, at its best, did something rarer: it made power <em>answerable.</em>"
+  </div>
+
+  <div class="legacy-attr reveal">— The American Lawyer, Profile of the Firm, 2001</div>
+
+  <div class="legacy-rule reveal"></div>
+
+  <p class="prose reveal" style="max-width:640px; margin: 0 auto 52px; text-align:center;">
+    The firm's founding partners left behind more than a legal practice. They left a <strong>doctrine</strong> — an internally transmitted understanding of what it means to practice law without compromise — that has shaped every attorney who has passed through these offices. The names change. The floors change. The rate sheet changes. The standard does not.
+  </p>
+
+  <div class="legacy-rule reveal"></div>
+
+  <div class="legacy-footer-brand reveal">HARLOW <span>&</span> VOSS LLP · ONE VANDERBILT · MANHATTAN</div>
+</section>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger children of certain containers
+document.querySelectorAll('.timeline, .divisions-grid, .achievements-list, .stats-row').forEach(container => {
+  const children = container.querySelectorAll('.t-entry, .division-card, .ach-row, .stat-cell');
+  children.forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.07}s`;
+  });
+});
+</script>
+</body>
+</html>
